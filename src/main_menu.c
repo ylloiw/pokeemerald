@@ -1293,6 +1293,11 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     PlayBGM(MUS_ROUTE122);
     ShowBg(0);
     ShowBg(1);
+    
+    //SS: skip intro code
+    gSaveBlock2Ptr->playerGender = 0;
+    NewGameBirchSpeech_SetDefaultPlayerName(1);
+    CB2_NewGame();
 }
 
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
