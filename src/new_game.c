@@ -133,6 +133,7 @@ static void WarpToTruck(void)
     
     //keep safari mode online until you have at least 1 pokemon
     FlagSet(FLAG_SYS_SAFARI_MODE);
+    //gNumSafariBalls = 30;
     
     //Truck flags
     ScriptContext2_RunNewScript(InsideOfTruck_EventScript_SetIntroFlagsMale);

@@ -615,5 +615,6 @@ extern const u8 EventScript_TerminateLink[];
 
 extern const u8 InsideOfTruck_EventScript_SetIntroFlagsMale[];
 extern const u8 Skip_Setup[];
+//extern EWRAM_DATA u8 gNumSafariBalls;
 
 #endif // GUARD_EVENT_SCRIPTS_H
