@@ -376,6 +376,10 @@ static u8 CheckPathBetweenTrainerAndPlayer(struct ObjectEvent *trainerObj, u8 ap
     u8 i;
     u8 collision;
 
+    //if on safari mode, on-sight battles will not trigger
+    if (FlagGet(FLAG_SYS_SAFARI_MODE))
+        return 0;
+
     if (approachDistance == 0)
         return 0;
 
@@ -440,7 +444,6 @@ static void Task_RunTrainerSeeFuncList(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
     struct ObjectEvent *trainerObj = &gObjectEvents[task->tTrainerObjectEventId];
-
     if (!trainerObj->active)
     {
         SwitchTaskToFollowupFunc(taskId);
@@ -460,7 +463,6 @@ static bool8 TrainerSeeIdle(u8 taskId, struct Task *task, struct ObjectEvent *tr
 static bool8 TrainerExclamationMark(u8 taskId, struct Task *task, struct ObjectEvent *trainerObj)
 {
     u8 direction;
-
     ObjectEventGetLocalIdAndMap(trainerObj, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EXCLAMATION_MARK_ICON);
     direction = GetFaceDirectionMovementAction(trainerObj->facingDirection);
@@ -506,7 +508,7 @@ static bool8 TrainerMoveToPlayer(u8 taskId, struct Task *task, struct ObjectEven
     return FALSE;
 }
 
-// TRSEE_PLAYER_FACE
+// TRSEE_PLAYER_FACE: after trainer walks up, before dialogue
 static bool8 PlayerFaceApproachingTrainer(u8 taskId, struct Task *task, struct ObjectEvent *trainerObj)
 {
     struct ObjectEvent *playerObj;
