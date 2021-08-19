@@ -128,6 +128,7 @@ static void ClearFrontierRecord(void)
 static void WarpToTruck(void)
 {
 //https://regexr.com/640n0
+    //SetWarpDestination(MAP_GROUP(LITTLEROOT_TOWN), MAP_NUM(LITTLEROOT_TOWN), -1, -1, -1);
     SetWarpDestination(MAP_GROUP(ROUTE120), MAP_NUM(ROUTE120), -1, -1, -1);
     
     //keep safari mode online until you have at least 1 pokemon
@@ -150,8 +151,9 @@ static void WarpToTruck(void)
     //post starter 
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM);
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM);
-    FlagSet(FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE);
-    FlagSet(FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG);
+    
+    //post get pokedex
+    ScriptContext2_RunNewScript(Skip_Setup);
     
     WarpIntoMap();
 }

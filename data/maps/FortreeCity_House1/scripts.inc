@@ -134,17 +134,5 @@ FortreeCity_House1_EventScript_BirchsBag::
     compare VAR_RESULT, NO
     releaseall
 	end
-
-
-Starter_SafariStarted:
-	.string "Started Safari$"
-
-FortreeCity_House1_EventScript_safari::
-    lockall
-    special EnterSafariMode
-    msgbox Starter_SafariStarted
-    releaseall
-    end
-    
     
     

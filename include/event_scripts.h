@@ -614,5 +614,6 @@ extern const u8 EventScript_TerminateLink[];
 
 
 extern const u8 InsideOfTruck_EventScript_SetIntroFlagsMale[];
+extern const u8 Skip_Setup[];
 
 #endif // GUARD_EVENT_SCRIPTS_H

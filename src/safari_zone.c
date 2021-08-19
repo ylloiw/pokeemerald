@@ -100,6 +100,7 @@ void CB2_EndSafariBattle(void)
     if (gBattleOutcome == B_OUTCOME_CAUGHT){
         sSafariZoneCaughtMons++;
         FlagClear(FLAG_SYS_SAFARI_MODE);
+        //fix this so that it displays the Pokemon menu
     }
     if (gNumSafariBalls != 0)
     {

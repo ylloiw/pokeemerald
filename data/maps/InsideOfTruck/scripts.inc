@@ -58,3 +58,20 @@ InsideOfTruck_Text_BoxPrintedWithMonLogo:
 	.string "It's a POKéMON brand moving and\n"
 	.string "delivery service.$"
 
+
+
+
+Skip_Setup::
+    setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_RESCUED_BIRCH
+    clearflag FLAG_HIDE_ROUTE_101_BOY
+	message LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex
+	setflag FLAG_SYS_POKEDEX_GET
+	special SetUnlockedPokedexFlags
+	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
+	return
+    end
+    
+    
+    
