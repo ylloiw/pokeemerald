@@ -45,6 +45,7 @@
 #include "berry_powder.h"
 #include "mevent.h"
 #include "union_room_chat.h"
+#include "event_scripts.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -126,15 +127,32 @@ static void ClearFrontierRecord(void)
 
 static void WarpToTruck(void)
 {
-    //SetWarpDestination(MAP_GROUP(INSIDE_OF_TRUCK), MAP_NUM(INSIDE_OF_TRUCK), -1, -1, -1);
-    SetWarpDestination(MAP_GROUP(LITTLEROOT_TOWN), MAP_NUM(LITTLEROOT_TOWN), -1, -1, -1);
+//https://regexr.com/640n0
+    SetWarpDestination(MAP_GROUP(ROUTE120), MAP_NUM(ROUTE120), -1, -1, -1);
+    
+    //keep safari mode online until you have at least 1 pokemon
+    FlagSet(FLAG_SYS_SAFARI_MODE);
+    
+    //Truck flags
+    ScriptContext2_RunNewScript(InsideOfTruck_EventScript_SetIntroFlagsMale);
+    
+    //Littleroot town
     //going to set flags to skip the first scenes up to getting the starter pokemon
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK); //gender:brendan
     FlagSet(FLAG_SET_WALL_CLOCK);
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1);
     FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2);
-    //VarSet(VAR_LITTLEROOT_INTRO_STATE,6);
+    VarSet(VAR_LITTLEROOT_INTRO_STATE,7); //finished all home events
+    //need to set clock if it affects future events
+    VarSet(VAR_LITTLEROOT_TOWN_STATE,2); //start on saving birch
+    VarSet(VAR_LITTLEROOT_HOUSES_STATE_MAY,2); //gender:brendan
     
-
+    //post starter 
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM);
+    FlagSet(FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE);
+    FlagSet(FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG);
+    
     WarpIntoMap();
 }
 

@@ -154,9 +154,9 @@
       "x": 10,
       "y": 1,
       "elevation": 3,
-      "var": "VAR_LITTLEROOT_TOWN_STATE",
+      "var": "VAR_UNUSED_0x40DB",
       "var_value": "0",
-      "script": "LittlerootTown_EventScript_NeedPokemonTriggerLeft"
+      "script": "LittlerootTown_EventScript_GoSaveBirchTrigger"
     },
     {
       "type": "trigger",

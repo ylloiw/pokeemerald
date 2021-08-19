@@ -99,3 +99,52 @@ FortreeCity_House1_Text_TradingMemoriesWithOthers:
 FortreeCity_House1_Text_Zigzagoon:
 	.string "ZIGZAGOON: Gumomoh?$"
 
+
+
+Starter_NicknameToMon:
+	.string "Give a nickname to that {STR_VAR_1}?$"
+
+Starter_NicknameStarter::
+	setvar VAR_0x8004, 0
+	call Common_EventScript_NameReceivedPartyMon
+	end
+
+FortreeCity_House1_EventScript_BirchsBag::
+	lock
+	faceplayer
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_RESCUED_BIRCH
+	fadescreen FADE_TO_BLACK
+	waitmovement 0
+	special ChooseStarter
+	waitstate
+	special HealPlayerParty
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+	setvar VAR_BIRCH_LAB_STATE, 2
+	setvar VAR_ROUTE101_STATE, 3
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+
+	lockall
+	bufferleadmonspeciesname 0
+	playfanfare MUS_OBTAIN_ITEM
+	waitfanfare
+	msgbox Starter_NicknameToMon, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq Starter_NicknameStarter
+    compare VAR_RESULT, NO
+    releaseall
+	end
+
+
+Starter_SafariStarted:
+	.string "Started Safari$"
+
+FortreeCity_House1_EventScript_safari::
+    lockall
+    special EnterSafariMode
+    msgbox Starter_SafariStarted
+    releaseall
+    end
+    
+    
+    

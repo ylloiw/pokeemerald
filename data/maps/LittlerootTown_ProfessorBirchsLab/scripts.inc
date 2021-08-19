@@ -36,7 +36,7 @@ LittlerootTown_ProfessorBirchsLab_OnTransition:
 	compare VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_CheckReadyForJohtoStarter
 	end
-
+    
 LittlerootTown_ProfessorBirchsLab_EventScript_CheckReadyForJohtoStarter::
 	specialvar VAR_RESULT, HasAllHoennMons
 	compare VAR_RESULT, TRUE

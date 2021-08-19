@@ -97,8 +97,10 @@ void SafariZoneRetirePrompt(void)
 void CB2_EndSafariBattle(void)
 {
     sSafariZonePkblkUses += gBattleResults.pokeblockThrows;
-    if (gBattleOutcome == B_OUTCOME_CAUGHT)
+    if (gBattleOutcome == B_OUTCOME_CAUGHT){
         sSafariZoneCaughtMons++;
+        FlagClear(FLAG_SYS_SAFARI_MODE);
+    }
     if (gNumSafariBalls != 0)
     {
         SetMainCallback2(CB2_ReturnToField);
