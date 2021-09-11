@@ -376,6 +376,9 @@ static u8 CheckPathBetweenTrainerAndPlayer(struct ObjectEvent *trainerObj, u8 ap
     u8 i;
     u8 collision;
 
+    //SS: explore to find hm locations
+    return 0;
+    
     //if on safari mode, on-sight battles will not trigger
     if (FlagGet(FLAG_SYS_SAFARI_MODE))
         return 0;

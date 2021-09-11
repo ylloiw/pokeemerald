@@ -129,7 +129,7 @@ static void WarpToTruck(void)
 {
 //https://regexr.com/640n0
     //SetWarpDestination(MAP_GROUP(LITTLEROOT_TOWN), MAP_NUM(LITTLEROOT_TOWN), -1, -1, -1);
-    SetWarpDestination(MAP_GROUP(ROUTE120), MAP_NUM(ROUTE120), -1, -1, -1);
+    SetWarpDestination(MAP_GROUP(FORTREE_CITY), MAP_NUM(FORTREE_CITY), -1, -1, -1);
     
     //keep safari mode online until you have at least 1 pokemon
     FlagSet(FLAG_SYS_SAFARI_MODE);
